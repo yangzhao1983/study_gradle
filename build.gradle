@@ -1,0 +1,48 @@
+buildscript{
+    // for gradle itself
+}
+
+plugins {
+    id 'org.hidetake.ssh' version '2.0.0'
+}
+
+group 'hello_world'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+apply plugin: 'groovy'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+allprojects{
+    // define a new task with name "projectName"
+    // call it by
+    // gradle projectName
+    task projectName << { task -> println "I'm $task.project.name"}
+}
+
+remotes {
+    webServer {
+        host = '10.245.253.136'
+        user = 'yangzhao'
+//        identity = file('id_rsa')
+        password = "Mut1anyu@9"
+    }
+}
+
+task deploy {
+    doLast {
+        ssh.run {
+            session(remotes.webServer) {
+            }
+        }
+    }
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+}
