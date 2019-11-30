@@ -27,10 +27,10 @@ allprojects{
 
 remotes {
     webServer {
-        host = '10.245.253.136'
-        user = 'yangzhao'
+        host = 'XXX.XXX.XXX.XXX'
+        user = 'XXXX'
 //        identity = file('id_rsa')
-        password = "Mut1anyu@9"
+        password = "xxxxx"
     }
 }
 
